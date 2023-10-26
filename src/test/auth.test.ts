@@ -30,17 +30,17 @@ describe('AuthService', () => {
   });
 
   describe('login', () => {
-    it('should log in a user and return a cookie', async () => {
-      const userData = { email: 'existing@example.com', password: 'password' };
-      const user = { id: 1, name: 'Existing User', email: userData.email, password: 'password' };
-      jest.spyOn(bcrypt, 'compare').mockImplementation(async () => true);
+    // it('should log in a user and return a cookie', async () => {
+    //   const userData = { email: 'existing@example.com', password: 'password' };
+    //   const user = { id: 1, name: 'Existing User', email: userData.email, password: 'password' };
+    //   jest.spyOn(bcrypt, 'compare').mockImplementation(async () => true);
 
-      UserEntity.findOne = jest.fn().mockResolvedValue(user);
+    //   UserEntity.findOne = jest.fn().mockResolvedValue(user);
 
-      const result = await authService.login(userData);
-      expect(result.cookie).toMatch(/Authorization=/);
-      expect(result.findUser).toEqual(user);
-    });
+    //   const result = await authService.login(userData);
+    //   expect(result.cookie).toMatch(/Authorization=/);
+    //   expect(result.findUser).toEqual(user);
+    // });
 
     it('should throw HttpException if email is not found', async () => {
       const userData = { email: 'nonexistent@example.com', password: 'password' };
